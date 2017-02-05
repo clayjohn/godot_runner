@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Obstacle.gd" type="Script" id=1]
+[ext_resource path="res://static_platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://collider.gd" type="Script" id=3]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+custom_solver_bias = 0.0
+a = Vector2( -50, 0 )
+b = Vector2( 50, 0 )
+
+[node name="Obstacle" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="static_platform" parent="." instance=ExtResource( 2 )]
+
+[node name="ridge" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 0, -25 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.5, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+one_way_collision/max_depth = 5.0
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ridge"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="ridge"]
+
+transform/scale = Vector2( 50, 4 )
+polygon = Vector2Array( -1, 0, 1, 0, 1, 1, -1, 1 )
+uv = Vector2Array(  )
+color = Color( 0.126373, 0.369704, 0.789062, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+
