@@ -1,2 +1,9 @@
 #save files
 *.save
+#vim files
+*.un~
+*.swp
+*~
+
+
+
