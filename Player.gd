@@ -43,13 +43,14 @@ var mouse_action = false
 
 func _input(event):
 	if event.type == InputEvent.SCREEN_TOUCH:
-		if event.y < global.size.y*0.5:
+		if event.x > global.size.x*0.5:
 			if event.is_pressed():
 				mouse_walk = true
 			else:
 				mouse_walk = false
-		else:
+		elif event.is_pressed():
 			mouse_jump = true
+
 			
 
 func _fixed_process(delta):
