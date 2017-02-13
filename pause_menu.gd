@@ -1,6 +1,7 @@
 
 extends Control
 
+
 func _fixed_process(delta):
 	var escape = Input.is_action_pressed("close_app")
 	if global.paused:

@@ -38,14 +38,33 @@ var prev_colliding = false
 
 var autowalk = false
 
+func _input(event):
+#	if event.type == InputEvent.SCREEN_TOUCH or event.type == InputEvent.SCREEN_DRAG:
+#		if event.x>512:
+#			print("touching")
+#		elif event.x<512:
+#			print("leffft")
+#	if event.type == InputEvent.MOUSE_BUTTON:
+#		if event.x>512:
+	#			print("touch"pass)
+	pass
 
 func _fixed_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
+	var mouse_move = false
+	var mouse_jump = false
+	if Input.is_mouse_button_pressed(1):
+		var mouse_pos = get_viewport().get_mouse_pos()
+		var screen = get_viewport().get_rect().size
+		if mouse_pos.y<screen.y*0.5:
+			mouse_move = true
+		else:
+			mouse_jump = true
 	
 	var walk_left = Input.is_action_pressed("move_left")
-	var walk_right = Input.is_action_pressed("move_right") or autowalk
-	var jump = Input.is_action_pressed("jump")
+	var walk_right = Input.is_action_pressed("move_right") or autowalk or mouse_move
+	var jump = Input.is_action_pressed("jump") or mouse_jump
 	var drop = Input.is_action_pressed("move_down")
 	
 	var stop = true
@@ -156,3 +175,4 @@ func _fixed_process(delta):
 
 func _ready():
 	set_fixed_process(true)
+	set_process_input(true)

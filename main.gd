@@ -11,14 +11,14 @@ var distance = 0.0
 var highscore
 var passed_highscore = false
 
-
-func _fixed_process(delta):
-	#check if need to exit
-	var escape = Input.is_action_pressed("close_app")
-	if (escape):
+func _input(event):
+	if (Input.is_action_pressed("close_app")):
 		global.paused = true
 		get_tree().set_pause(true)
-		#get_tree().quit()
+		
+
+func _fixed_process(delta):
+
 	randomize()
 	#increase player speed as game progresses
 	#camera speed should update at the same time
@@ -42,6 +42,7 @@ func _fixed_process(delta):
 
 func _ready():
 	set_fixed_process(true)
+	set_process_input(true)
 	player = get_node("Player")
 	camera = get_node("camera_rig")
 	HUD = get_node("HUD")
