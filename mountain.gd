@@ -2,7 +2,7 @@
 extends Node2D
 
 var num_boxes = 11
-var width = 1100
+var width = global.size.x
 var height = 150
 
 #this is not the most efficient thing to do, but it should work

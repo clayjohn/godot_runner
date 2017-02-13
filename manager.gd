@@ -10,6 +10,8 @@ var tiles = {}
 var paths = {}
 var dead = []
 
+
+
 func _fixed_process(delta):
 	var camerapos = get_parent().camera.get_pos()
 	var pos = player.get_pos()
@@ -48,7 +50,7 @@ func _fixed_process(delta):
 			if not tiles[i].falling:
 				tiles[i].set_falling(true)
 		
-		if tiles[i].pos.x < camerapos.x-700:
+		if tiles[i].pos.x < camerapos.x-global.size.x*0.7:
 			tiles[i].free()
 			dead.append(i)
 	for i in range(dead.size()):

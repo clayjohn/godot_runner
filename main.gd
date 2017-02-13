@@ -32,7 +32,7 @@ func _fixed_process(delta):
 		highscore = int(distance)
 		HUD.set_highscore(str(highscore))
 	
-	if (player.get_pos().y>camera.get_pos().y+500 or distance<camera.get_pos().x-600):
+	if (player.get_pos().y>camera.get_pos().y+global.size.y*0.5+100 or distance<camera.get_pos().x-global.size.x*0.7):
 		get_tree().change_scene("res://death_state.tscn")
 		global.highscore = highscore
 		global.lastscore = distance

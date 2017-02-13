@@ -12,7 +12,7 @@ func _fixed_process(delta):
 	var cpos = parent.get_node("camera").get_camera_pos()
 	var ppos = cpos-parent.get_pos()+parent.diff*delta
 	
-	var target = Vector2(-512, 300)
+	var target = Vector2(-0.5, 0.5)*global.size
 	diff = (pos-parent.get_pos())
 	pos -= diff*delta*2
 	set_pos(ppos+target+diff*3)
