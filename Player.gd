@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-#TODO add a double jump
 
 #the code is borrowed from the tutorial
 #==================================#
@@ -15,12 +14,12 @@ extends KinematicBody2D
 const GRAVITY = 400.0 # Pixels/second
 
 # Angle in degrees towards either side that the player can consider "floor"
-const FLOOR_ANGLE_TOLERANCE = 40
+const FLOOR_ANGLE_TOLERANCE = 60
 const WALK_FORCE = 600
 const WALK_MIN_SPEED = 10
 var WALK_MAX_SPEED = 200
 const STOP_FORCE = 1300
-const JUMP_SPEED = 200
+const JUMP_SPEED = 220
 const JUMP_MAX_AIRBORNE_TIME = 0.2
 
 const SLIDE_STOP_VELOCITY = 1.0 # One pixel per second
@@ -35,6 +34,9 @@ var dropped_platform = null
 var last_platform = null
 
 var prev_jump_pressed = false
+var prev_colliding = false
+
+var autowalk = false
 
 
 func _fixed_process(delta):
@@ -42,7 +44,7 @@ func _fixed_process(delta):
 	var force = Vector2(0, GRAVITY)
 	
 	var walk_left = Input.is_action_pressed("move_left")
-	var walk_right = Input.is_action_pressed("move_right")
+	var walk_right = Input.is_action_pressed("move_right") or autowalk
 	var jump = Input.is_action_pressed("jump")
 	var drop = Input.is_action_pressed("move_down")
 	
@@ -78,9 +80,10 @@ func _fixed_process(delta):
 	var floor_velocity = Vector2()
 	
 	if (is_colliding()):
-
-		var platform = get_collider()
 		
+		var platform = get_collider()
+		jumping = false
+		double_jumping = false 
 		# You can check which tile was collision against with this
 		if(dropped_platform != null and dropped_platform != platform):
 			dropped_platform.set_one_way_collision_direction(Vector2(0, 1))
@@ -88,11 +91,16 @@ func _fixed_process(delta):
 		# Ran against something, is it the floor? Get normal
 		var n = get_collision_normal()
 		
+		
 		if (rad2deg(acos(n.dot(Vector2(0, -1)))) < FLOOR_ANGLE_TOLERANCE):
 			# If angle to the "up" vectors is < angle tolerance
 			# char is on floor
-			jumping = false
-			double_jumping = false 
+			if not prev_colliding:
+				get_node("poof").set_emitting(true)
+			if abs(velocity.x)>0.1:
+				get_node("trail").set_emitting(true)
+			else:
+				get_node("trail").set_emitting(false)
 			on_air_time = 0
 			floor_velocity = get_collider_velocity()
 			if (drop):
@@ -107,7 +115,6 @@ func _fixed_process(delta):
 			# 2) Did not move more than one pixel (get_travel().length() < SLIDE_STOP_MIN_TRAVEL)
 			# 3) Not moving horizontally (abs(velocity.x) < SLIDE_STOP_VELOCITY)
 			# 4) Collider is not moving
-#			print("undo")
 			revert_motion()
 			velocity.y = 0.0
 		else:
@@ -117,7 +124,7 @@ func _fixed_process(delta):
 			velocity = n.slide(velocity)
 			# Then move again
 			move(motion)
-		
+		prev_colliding = true
 	
 	if (floor_velocity != Vector2()):
 		# If floor moves, move with floor
@@ -130,6 +137,7 @@ func _fixed_process(delta):
 	if (jumping and not double_jumping and jump and not prev_jump_pressed):
 		velocity.y = -JUMP_SPEED
 		double_jumping = true
+		prev_colliding = false
 		
 	
 	if (jump and not prev_jump_pressed and (not jumping and not double_jumping)):
@@ -139,6 +147,8 @@ func _fixed_process(delta):
 		##figure out jumping issue
 		#move(velocity*delta)
 		jumping = true
+		prev_colliding = false
+		get_node("trail").set_emitting(false)
 	
 	on_air_time += delta
 	prev_jump_pressed = jump

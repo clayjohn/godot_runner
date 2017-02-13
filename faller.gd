@@ -10,7 +10,6 @@ var initial_pos
 var initial_rot
 
 func start_falling():
-	set_one_way_collision_direction(Vector2(0, 0))
 	falling = true
 	counting = true
 	initial_pos = get_pos()

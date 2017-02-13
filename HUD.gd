@@ -4,6 +4,7 @@ extends Control
 var dist_label
 var highscore_label
 var message_label
+var fps_label
 var message_age = 0
 var message_active = false
 
@@ -12,6 +13,9 @@ func update_distance(x):
 	
 func set_highscore(x):
 	highscore_label.set_text("Highscore: " + x)
+	
+func update_fps(x):
+	fps_label.set_text("FPS: " + x)
 	
 func display_message(x):
 	message_age = 0
@@ -28,6 +32,7 @@ func _ready():
 	dist_label = get_node("layer/distance")
 	highscore_label = get_node("layer/highscore")
 	message_label = get_node("layer/message")
+	fps_label = get_node("layer/fps")
 	set_fixed_process(true)
 
 

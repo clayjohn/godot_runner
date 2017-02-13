@@ -1,0 +1,233 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://cloud.gd" type="Script" id=1]
+
+[sub_resource type="ColorRamp" id=1]
+
+offsets = FloatArray( 0, 0.187135, 1 )
+colors = ColorArray( 0.397988, 0.267385, 0.257506, 1, 0.602051, 0.601231, 0.609172, 1, 0.423175, 0.443179, 0.504026, 0.283292 )
+
+[node name="dust_cloud" type="Node2D"]
+
+transform/pos = Vector2( -512, 300 )
+script/script = ExtResource( 1 )
+
+[node name="cloud1" type="Particles2D" parent="."]
+
+config/amount = 32
+config/lifetime = 2.0
+config/explosiveness = 0.85
+params/direction = 134.725
+params/spread = 32.5017
+params/linear_velocity = 200.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 50.0
+params/final_size = 100.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/initial_size = 0.1
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud2" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 102.527, -4.10107 )
+config/amount = 32
+config/lifetime = 1.6
+config/explosiveness = 0.75
+params/direction = 180.0
+params/spread = 70.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 30.0
+params/final_size = 50.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/initial_size = 0.5
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud3" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 176.347, -2.05054 )
+config/amount = 32
+config/lifetime = 1.9
+config/explosiveness = 0.5
+params/direction = 160.0
+params/spread = 60.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 25.0
+params/final_size = 40.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/initial_size = 0.5
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud4" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 264.521, -8.20221 )
+config/amount = 32
+config/lifetime = 1.85
+config/explosiveness = 0.5
+params/direction = 150.73
+params/spread = 50.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 30.0
+params/final_size = 50.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/final_size = 0.5
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud5" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 362.947, -4.10109 )
+config/amount = 32
+config/lifetime = 1.7
+config/preprocess = 0.1
+config/explosiveness = 0.5
+params/direction = 140.73
+params/spread = 45.0
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 20.0
+params/final_size = 40.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.75
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud6" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 2.05017, -57.4154 )
+config/amount = 32
+config/lifetime = 3.0
+config/explosiveness = 0.75
+params/direction = 134.725
+params/spread = 32.5017
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 30.0
+params/final_size = 50.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/final_size = 0.5
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud7" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 6.15137, -133.286 )
+config/amount = 32
+config/lifetime = 1.6
+config/explosiveness = 0.25
+params/direction = 134.725
+params/spread = 32.5017
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 30.0
+params/final_size = 50.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="cloud8" type="Particles2D" parent="."]
+
+transform/pos = Vector2( -4.10144, -170.196 )
+config/amount = 32
+config/lifetime = 2.0
+config/explosiveness = 0.3
+params/direction = 134.725
+params/spread = 32.5017
+params/linear_velocity = 100.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 15.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 20.0
+params/final_size = 40.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/linear_velocity = 0.5
+randomness/damping = 0.5
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 1 )
+
+

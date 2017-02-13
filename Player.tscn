@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 
@@ -11,6 +11,16 @@ length = 5.0
 
 custom_solver_bias = 0.0
 extents = Vector2( 15, 25 )
+
+[sub_resource type="ColorRamp" id=3]
+
+offsets = FloatArray( 0, 0.409357, 1 )
+colors = ColorArray( 0.432534, 0.386838, 0.383911, 0.82877, 0.569806, 0.488821, 0.464344, 0.642062, 0.71875, 0.71875, 0.71875, 0.206697 )
+
+[sub_resource type="ColorRamp" id=4]
+
+offsets = FloatArray( 0, 0.309942, 1 )
+colors = ColorArray( 0.78125, 0.776314, 0.769043, 1, 0.6875, 0.650679, 0.61499, 0.816903, 1, 1, 1, 0 )
 
 [node name="Player" type="KinematicBody2D"]
 
@@ -31,7 +41,7 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( -15, 0 )
 polygon = Vector2Array( 0, 0, 0, -50, 30, -50, 30, 0 )
 uv = Vector2Array(  )
-color = Color( 0.370651, 0.629038, 0.859375, 1 )
+color = Color( 0.257477, 0.416676, 0.558594, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -54,5 +64,76 @@ transform/pos = Vector2( 0, -25 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 1
+
+[node name="poof" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 3, 0 )
+config/amount = 50
+config/lifetime = 1.0
+config/emit_timeout = 0.1
+config/emitting = false
+config/half_extents = Vector2( 20, 5 )
+config/local_space = false
+config/explosiveness = 0.05
+params/direction = 250.0
+params/spread = 60.0
+params/linear_velocity = 50.0
+params/spin_velocity = -1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 320.0
+params/gravity_strength = 20.0
+params/radial_accel = -10.0
+params/tangential_accel = 0.0
+params/damping = 50.0
+params/initial_angle = 0.0
+params/initial_size = 10.0
+params/final_size = 5.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 90.0
+randomness/spread = 1.0
+randomness/linear_velocity = 0.1
+randomness/spin_velocity = 1.0
+randomness/damping = 0.5
+randomness/initial_angle = 1.0
+randomness/initial_size = 1.0
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 3 )
+
+[node name="trail" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 4, 0 )
+config/amount = 50
+config/lifetime = 1.0
+config/emitting = false
+config/offset = Vector2( -10, 0 )
+config/half_extents = Vector2( 5, 5 )
+config/local_space = false
+params/direction = 230.0
+params/spread = 20.0
+params/linear_velocity = 60.0
+params/spin_velocity = -1.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 25.0
+params/radial_accel = -10.0
+params/tangential_accel = 0.0
+params/damping = 20.0
+params/initial_angle = 0.0
+params/initial_size = 10.0
+params/final_size = 5.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 0.5
+randomness/spread = 0.5
+randomness/linear_velocity = 0.1
+randomness/spin_velocity = 1.0
+randomness/damping = 0.5
+randomness/initial_angle = 0.5
+randomness/initial_size = 0.5
+randomness/final_size = 1.0
+color/color_ramp = SubResource( 4 )
 
 
